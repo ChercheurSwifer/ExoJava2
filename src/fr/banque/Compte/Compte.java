@@ -19,8 +19,12 @@ public class Compte
         return solde;
     }
 
-    public void setSolde(double solde) {
+    private void setSolde(double solde) {
         this.solde = solde;
+    }
+
+    private void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public int getNumero() {
@@ -29,12 +33,12 @@ public class Compte
 
     public void ajouter(double UnMontant)
     {
-        this.solde = solde + UnMontant;
+        this.solde += UnMontant;
     }
 
     public void retirer(double UnMontant)
     {
-        this.solde = solde - UnMontant;
+        this.solde -= UnMontant;
     }
 
     @Override
