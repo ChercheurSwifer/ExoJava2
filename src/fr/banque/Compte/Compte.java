@@ -1,3 +1,4 @@
+//region Compte
 package fr.banque.Compte;
 
 public class Compte
@@ -16,10 +17,10 @@ public class Compte
     }
 
     public double getSolde() {
-        return solde;
+        return this.solde;
     }
 
-    private void setSolde(double solde) {
+    protected void setSolde(double solde) {
         this.solde = solde;
     }
 
@@ -44,8 +45,8 @@ public class Compte
     @Override
     public String toString() {
         return "Compte{" +
-                "solde=" + this.getSolde() +
-                ", numero=" + this.getNumero() +
+                "solde=" + solde +
+                ", numero=" + numero +
                 '}';
     }
 
@@ -61,3 +62,4 @@ public class Compte
         }
     }
 }
+//endregion
