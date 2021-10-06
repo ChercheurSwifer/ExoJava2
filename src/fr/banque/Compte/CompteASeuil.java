@@ -1,62 +1,41 @@
 package fr.banque.Compte;
 
-import fr.banque.Compte.Compte;
-
-public class CompteASeuil extends Compte
+public class CompteASeuil extends Compte implements ICompteASeuil
 {
     private Double seuil;
-    // --------------------------------------- REGION GLOBAL CLASS fr.banque.Compte.CompteASeuil
-
-    //region CONSTRUCTEUR
-
-    public CompteASeuil() {
-
-    }
-
-    public CompteASeuil(double solde, int numero, Double seuil) {
-        super(solde, numero);
-        this.seuil = seuil;
-    }
-
-    //endregion
-
-    //region GETTER ET SETTER
 
     public Double getSeuil() {
-        return seuil;
+        return this.seuil;
     }
 
     public void setSeuil(Double seuil) {
         this.seuil = seuil;
     }
 
-    //endregion
+    public CompteASeuil() {
+    }
 
-    //region TO STRING
+    public CompteASeuil(Integer numero, Double solde, Double seuil) {
+        super(numero, solde);
+        this.seuil = seuil;
+    }
 
     @Override
     public String toString() {
-        return "fr.banque.Compte.CompteASeuil{" +
+        return "CompteASeuil{" +
+                "numero=" + this.getNumero() +
+                ", solde=" + this.getSolde() +
                 "seuil=" + seuil +
                 '}';
     }
 
-    //endregion
-
-    //region FONCTIONS
-
-    public void retirer(double unMontant)
-    {
-        if(this.getSolde() - unMontant > this.seuil) {
-            setSolde(this.getSolde()- unMontant);
+    @Override
+    public void retirer(Double unMontant) {
+        if(this.getSolde()-unMontant > this.getSeuil()){
+            super.retirer(unMontant);
+        }else{
+            System.out.println("Impossible de retirer de l'argent. Veuillez alimenter votre compte.");
         }
-        else
-        {
-            System.out.println("Impossible de retirer ! SEUIL Atteint ");
-        }
+
     }
-
-    //endregion
-
-    // ---------------------------------------
 }

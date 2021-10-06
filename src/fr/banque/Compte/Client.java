@@ -1,86 +1,27 @@
-//region Client
 package fr.banque.Compte;
 
 import java.util.Arrays;
 
-public class Client extends Compte {
-    private String nom;
-    private String prenom;
-    private int age;
-    private int numero;
-    private Compte[] cpt = new Compte[5];
+public class Client {
+    String nom;
+    String prenom;
+    Integer age;
+    Integer numero;
+    Compte[] comptes = new Compte[5];
 
+    //region Contructeurs
+    public Client() {
+    }
 
-    public Client(double solde, int numero, String nom, String prenom, int age, int numero1) {
-        super(solde, numero);
+    public Client(String nom, String prenom, Integer age, Integer numero) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
-        this.numero = numero1;
+        this.numero = numero;
     }
+    //endregion
 
-    public Client(String larochette, String alexis, int i, int i1) {
-
-    }
-
-
-    /*
-    Permet d'ajouter un compte a nos client
-
-     */
-    public void ajouterCompte(Compte unCompte)
-    {
-        Boolean addCpt = false;
-
-        for (int i=0; i < cpt.length; i++)
-        {
-            if(this.cpt[i] == null) {
-                this.cpt[i] = unCompte;
-                addCpt = true;
-                break;
-            }
-        }
-        if(!addCpt == addCpt){
-            System.out.println("Vous avez le max de compte");
-        }
-    }
-
-    /*
-            Permet de retourner un compte
-     */
-
-    public Compte getCompte(int numeroCompte)
-    {
-        Compte cptcopy = null;
-        for(Compte compte : this.getCpt())
-        {
-            if(compte.getNumero() == numeroCompte)
-            {
-                cptcopy = compte;
-                break;
-            }
-        }
-        if (cptcopy == null)
-        {
-            System.out.println("Compte inconnu");
-        }
-        return cpt[numeroCompte];
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", age=" + age +
-                ", numero=" + numero +
-                ", cpt=" + Arrays.toString(cpt) +
-                '}';
-    }
-
-
+    //region Getter Setter
     public String getNom() {
         return nom;
     }
@@ -97,41 +38,78 @@ public class Client extends Compte {
         this.prenom = prenom;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    @Override
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
-    public Compte[] getCpt() {
-        return cpt;
+    public Compte[] getComptes() {
+        return comptes;
     }
 
-    public void setCpt(Compte[] cpt) {
-        this.cpt = cpt;
+    public void setComptes(Compte[] comptes) {
+        this.comptes = comptes;
+    }
+    //endregion
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", age=" + age +
+                ", numero=" + numero +
+                ", comptes=" + Arrays.toString(comptes) +
+                '}';
     }
 
-    public boolean equals(Object obj)
-    {
-        if(this == obj)
-        {
-            return true;
+    /**
+     * Permet d'ajouter un compte à notre liste de comptes
+     * @param unCompte
+     */
+    public void ajouterCompte(Compte unCompte) {
+        Boolean addCompte = false;
+        for (int i=0; i < this.getComptes().length; i++){
+            if(this.getComptes()[i] == null){
+                this.getComptes()[i] = unCompte;
+                addCompte = true;
+                break;
+            }
         }
-        else
-        {
-            return false;
+        if(!addCompte)
+            System.out.println("Vous avez le max de compte.");
+    }
+
+    /**
+     * Permet de récuperer un compte avec son numéro de compte
+     * @param numeroCompte
+     * @return Compte
+     *
+     */
+    public Compte getCompte(Integer numeroCompte) {
+        Compte compteCopy = null;
+        for (Compte compte : this.getComptes()) {
+            if (compte != null) {
+                if(compte.getNumero().doubleValue() == numeroCompte) {
+                    compteCopy = compte;
+                    break;
+                }
+            }
         }
+        if(compteCopy == null) {
+            System.out.println("compte inconnu !");
+        }
+        return compteCopy;
     }
 }
-//endregion

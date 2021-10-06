@@ -1,65 +1,46 @@
-//region Compte
 package fr.banque.Compte;
 
-public class Compte
-{
-    private double solde;
-    private int numero;
+public class Compte {
+    private Integer numero;
+    private Double solde;
 
-    public Compte()
-    {
-
+    public Compte() {
     }
 
-    public Compte(double solde, int numero) {
-        this.solde = solde;
+    public Compte(Integer numero, Double solde) {
         this.numero = numero;
-    }
-
-    public double getSolde() {
-        return this.solde;
-    }
-
-    protected void setSolde(double solde) {
         this.solde = solde;
-    }
-
-    private void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void ajouter(double UnMontant)
-    {
-        this.solde += UnMontant;
-    }
-
-    public void retirer(double UnMontant)
-    {
-        this.solde -= UnMontant;
     }
 
     @Override
     public String toString() {
         return "Compte{" +
-                "solde=" + solde +
-                ", numero=" + numero +
+                "numero=" + numero +
+                ", solde=" + solde +
                 '}';
     }
 
-    public boolean equals(Object obj)
-    {
-        if(this == obj)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    public Integer getNumero() {
+        return numero;
+    }
+
+    private void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public Double getSolde() {
+        return solde;
+    }
+
+    private void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+    public void ajouter(Double unMontant) {
+        this.solde += unMontant;
+    }
+
+    public void retirer(Double unMontant) {
+        this.solde -= unMontant;
     }
 }
-//endregion
